@@ -1,0 +1,26 @@
+<div>
+  <a  routerLink="/" routerLinkActive="active">
+    <div [class.selected]="'home' === selected" (click)="setSelected('home')" class="div-li">
+      <mat-icon svgIcon="calendar"></mat-icon> Home</div>
+  </a>
+
+  <a  routerLink="/analitics" routerLinkActive="active">
+    <div [class.selected]="'analitic' === selected" (click)="setSelected('analitic')" class="div-li">
+      <mat-icon svgIcon="chart"></mat-icon> Analitic</div>
+  </a>
+
+  <a  routerLink="/history" routerLinkActive="active">
+    <div [class.selected]="'history' === selected" (click)="setSelected('history')" class="div-li">
+      <mat-icon svgIcon="cloud"></mat-icon> History</div>
+  </a>
+
+  <a  routerLink="/projects" routerLinkActive="active">
+    <div [class.selected]="'projects' === selected" (click)="setSelected('projects')" class="div-li">
+      <mat-icon svgIcon="presentation"></mat-icon> Projects</div>
+  </a>
+
+  <a   routerLink="/logout" routerLinkActive="active">
+    <div [class.selected]="'logout' === selected" (click)="setSelected('logout')" class="div-li">
+      <mat-icon svgIcon="logout"></mat-icon> Logout</div>
+  </a>
+</div>

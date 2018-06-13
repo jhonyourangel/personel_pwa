@@ -1,0 +1,11 @@
+.flex-space {
+    flex-grow: 1
+}
+
+.sidebar-width {
+    width: 3em
+}
+
+mat-drawer-container {
+    height: 100vh;
+}
