@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { LoginService } from '../../network/login.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -29,13 +30,22 @@ export class LoginPageComponent implements OnInit {
   ]);
 
   matcher = new MyErrorStateMatcher();
+  loginService: LoginService;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(loginService: LoginService
+  ) {
+    this.loginService = loginService;
   }
-
-  onLogin() {
-    console.log(this.formEmail, this.formPassword);
+    ngOnInit() {
+    }
+ 
+    onLogin() {
+      console.log(this.formEmail, this.formPassword);
+      // if you insert the correct credentials is working great
+      
+      this.loginService.login(this.formEmail, this.formPassword)
+        .subscribe((data: any) => {
+          console.log(data);
+        });
   }
 }
