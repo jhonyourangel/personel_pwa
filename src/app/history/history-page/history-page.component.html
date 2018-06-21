@@ -1,3 +1,4 @@
-<p>
-  history-page works!
-</p>
+<div class="container">
+  <button mat-mini-fab color="primary" (click)="prepareNewTransaction()">+</button>
+  <app-history-card *ngFor="let trans of transactions" [trans]="trans"></app-history-card>
+</div>

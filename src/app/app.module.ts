@@ -14,7 +14,8 @@ import { MatToolbarModule,
    MatListModule,
    MatFormFieldModule,
    MatInputModule,
-   MatCardModule
+   MatCardModule,
+   MatSlideToggleModule
    } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { MiniProfileComponent } from './sidebar-sections/mini-profile/mini-profile.component';
@@ -30,17 +31,20 @@ import { LogoutPageComponent } from './enrollment/logout-page/logout-page.compon
 import { SigninPageComponent } from './enrollment/signin-page/signin-page.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HistoryCardComponent } from './history/history-card/history-card.component';
 
 
 const appRoutes: Routes = [
-  { path: './', component: MainPageComponent },
+  // { path: './', component: MainPageComponent },
+  { path: 'home', component: MainPageComponent },
   { path: 'analitics', component: AnaliticsPageComponent },
   { path: 'history', component: HistoryPageComponent },
   { path: 'projects', component: ProjectsPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'logout', component: LogoutPageComponent },
   { path: 'register', component: SigninPageComponent },
-  { path: '**', redirectTo: '/'  }
+  { path: './', redirectTo: '/home'  },
+  { path: '**', redirectTo: '/home'  }
 ];
 
 @NgModule({
@@ -55,6 +59,7 @@ const appRoutes: Routes = [
     LoginPageComponent,
     LogoutPageComponent,
     SigninPageComponent,
+    HistoryCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +77,8 @@ const appRoutes: Routes = [
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

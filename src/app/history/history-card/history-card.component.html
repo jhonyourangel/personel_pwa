@@ -1,0 +1,31 @@
+<div class="cardSize">
+  <mat-card [style.backgroundColor]="todayColor" class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>created: {{ creationDate }} </mat-card-title>
+      <mat-card-subtitle>edited: {{ editDate }}</mat-card-subtitle>
+    </mat-card-header>
+    <!-- not editing -->
+    <mat-card-content *ngIf="!editingMode">
+      <div>project: {{ projectName }}</div>
+      <div>workedDate: {{ workedDate }}</div>
+      <div>start: {{ startTime }}</div>
+      <div>end: {{ endTime }}</div>
+      <mat-slide-toggle disabled="{{ true }}" checked="{{billed}}">Billed</mat-slide-toggle>
+    </mat-card-content>
+      <!-- editing -->
+    <mat-card-content *ngIf="editingMode">
+        <div>project: <input matInput type="text" [(value)]="projectName" (input)="projectName = $event.target.value"></div>
+        
+        <div>workedDate:<input matInput type="date" [(value)]="workedDate" (input)="workedDate = $event.target.value"></div>
+        <div>start:<input matInput type="time" [(value)]="startTime" (input)="startTime = $event.target.value"></div>
+        <div>end:<input matInput type="time" [(value)]="endTime" (input)="endTime = $event.target.value"></div>
+        <mat-slide-toggle disabled="{{ false }}" checked="{{billed}}" (change)="(billed = $event.checked)">Billed</mat-slide-toggle>
+
+      </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="{{ buttonColor }}" (click)="toggleEditingMode();initProperties();">{{ buttonTitle }}</button>
+        <button *ngIf="editingMode" mat-raised-button color="accent" (click)="toggleEditingMode();save();">Save</button>
+      </mat-card-actions>
+  </mat-card>
+</div>

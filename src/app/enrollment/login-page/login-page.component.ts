@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { LoginService } from '../../network/login.service';
+import { UserInfoService } from '../../storage/user-info.service';
+import { AuthResponse } from '../../models/authResponse';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -31,21 +35,40 @@ export class LoginPageComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
   loginService: LoginService;
+  userInfo: UserInfoService;
+  authResponse: AuthResponse;
 
-  constructor(loginService: LoginService
+  constructor( 
+    loginService: LoginService,
+    userInfo: UserInfoService,
+    private router: Router,
   ) {
+
     this.loginService = loginService;
+    this.userInfo = userInfo;
   }
-    ngOnInit() {
+  ngOnInit() {
+    this.checkToken();
+  }
+
+  onLogin() {
+    console.log(this.formEmail, this.formPassword);
+    // if you insert the correct credentials is working great
+
+    this.loginService.login(this.formEmail, this.formPassword)
+      .subscribe((data: AuthResponse) => {
+        console.log(data);
+        this.userInfo.token = data.token;
+        this.loginService.setNavBarState(true);
+        this.checkToken();
+      });
+  }
+
+  checkToken() {
+    const token = this.userInfo.token;
+    if ( token !== '' ) {
+      console.log(`token is present in the browser storage ${token}`);
+      this.router.navigate(['/home']);
     }
- 
-    onLogin() {
-      console.log(this.formEmail, this.formPassword);
-      // if you insert the correct credentials is working great
-      
-      this.loginService.login(this.formEmail, this.formPassword)
-        .subscribe((data: any) => {
-          console.log(data);
-        });
   }
 }

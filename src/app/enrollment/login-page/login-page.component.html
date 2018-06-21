@@ -1,10 +1,10 @@
 <div class="main-div">
   <mat-card class="example-card">
-
+    <h1>Login</h1>
     <form class="example-form center">
       <p>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" [(ngModel)]="formEmail">
+          <input autocomplete="new-password" matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" [(ngModel)]="formEmail">
           <mat-hint></mat-hint>
           <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
             Please enter a valid email address
@@ -17,7 +17,7 @@
       </p>
       <p>
         <mat-form-field class="example-full-width">
-          <input type="password" matInput placeholder="Password" [formControl]="passwordFormControl" [errorStateMatcher]="matcher" [(ngModel)]="formPassword">
+          <input autocomplete="new-password" type="password" matInput placeholder="Password" [formControl]="passwordFormControl" [errorStateMatcher]="matcher" [(ngModel)]="formPassword">
           <mat-hint></mat-hint>
           <mat-error *ngIf="passwordFormControl.hasError('email') && !passwordFormControl.hasError('required')">
             Please enter the correct passord
