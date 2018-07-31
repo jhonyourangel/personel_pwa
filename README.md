@@ -6,10 +6,11 @@ this is the front-end of the personel app.
 is no longer in development. 
 The same app is beeing developed with ReactJs, since offer more flexibility 
 
-it contains:
-  -sidebar
-  -toolbar ( navbar )
-  -authentication structure with token
+It contains
+
+1. sidebar
+2. toolbar ( navbar )
+3. authentication structure with token
 
 
 ##if you spend some tme to understand it, you can use it for start projects since it has a good/popular project structure
