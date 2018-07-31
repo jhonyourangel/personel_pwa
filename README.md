@@ -13,7 +13,7 @@ It contains
 3. authentication structure with token
 
 
-##if you spend some tme to understand it, you can use it for start projects since it has a good/popular project structure
+## if you spend some tme to understand it, you can use it for start projects since it has a good/popular project structure
 if you need help, open a issue, but i won't guaranty i will help
 
 
